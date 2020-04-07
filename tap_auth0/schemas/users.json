@@ -1,0 +1,56 @@
+{
+    "type": "object",
+    "properties": {
+        "created_at": {
+            "type": "string", 
+            "format": "date-time"
+        },
+        "email": {
+            "type": "string",
+            "format": "email"
+        },
+        "email_verified": {
+            "type": "boolean"
+        },    
+        "identities": {
+            "type": "array",
+            "items": {
+                "properties": {
+                    "user_id": {
+                        "type": "string"
+                    },
+                    "provider": {
+                        "type": "string"
+                    },
+                    "connection": {
+                        "type": "string"
+                    },
+                    "isSocial": {
+                        "type": "boolean"
+                    }
+                }
+            }    
+        },
+        "last_password_reset": {
+                "type": "string",
+                "format": "date-time"
+        },
+            "name": {
+                "type": "string"
+        },
+            "nickname": {
+                "type": "string"
+        },
+            "picture": {
+                "type": "string"
+        },
+            "updated_at": {
+                "type": "string",
+                "format": "date-time"
+        },
+            "user_id": {
+                "type": "string",
+                "format": "date-time"
+        }
+    }
+}
