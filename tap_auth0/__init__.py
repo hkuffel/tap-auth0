@@ -30,22 +30,19 @@ def load_schema(entity_name):
     return schema
 
 def list_all_users():
-    users_list = []
-    per_page = CONFIG["per_page"]
-
     auth0 = get_auth0_client()
-    resp = auth0.users.list(per_page=per_page)
-    users_list.extend(resp["users"])
-
-    if "total" in resp.keys() and resp["total"] > per_page:
-        amount_of_additional_queries = ceil(resp["total"] / per_page) - 1
-        
+    users_schema = load_schema('users')
+    singer.write_schema('users', users_schema, 'user_id')
+    # Initial query to list first batch of users
+    resp = auth0.users.list(per_page=CONFIG["per_page"])
+    singer.write_records('users', resp["users"])
+    # If additional users to list, query more
+    if "total" in resp.keys() and resp["total"] > CONFIG["per_page"]:
+        amount_of_additional_queries = ceil(resp["total"] / CONFIG["per_page"]) - 1
         if amount_of_additional_queries > 0:
             for i in range(amount_of_additional_queries):
-                resp = auth0.users.list(per_page=per_page, page=i+1)
-                print(resp)
-                users_list.extend(resp["users"])
-    return users_list
+                resp = auth0.users.list(per_page=CONFIG["per_page"], page=i+1)
+                singer.write_records('users', resp["users"])
 
 def main_impl():
     args = singer.utils.parse_args([
@@ -55,11 +52,8 @@ def main_impl():
         
     CONFIG.update(args.config)
 
-    users_schema = load_schema('users')
-    users_list = list_all_users()
-    singer.write_schema('users', users_schema, 'user_id')
-    singer.write_records('users', users_list)
-
+    list_all_users()
+    
 def main():
     try:
         main_impl()
