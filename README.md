@@ -7,6 +7,11 @@ This tap:
 - Extracts the following resources from Auth0
   - [Users](https://auth0.com/docs/api/management/v2#!/Users/get_users)
 
+## Installation
+
+```bash
+> pip install tap-auth0
+```
 
 ## Configuration
 
