@@ -1,1 +1,1 @@
-tap_auth0/schema.*
+include tap_auth0/schemas/*.json

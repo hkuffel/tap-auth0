@@ -19,10 +19,5 @@ setup(
         tap-auth0=tap_auth0:main
     ''',
     packages=['tap_auth0'],
-    package_data={
-        'tap_auth0/schemas': [
-            "users.json",
-        ],
-    },
     include_package_data=True,
 )
