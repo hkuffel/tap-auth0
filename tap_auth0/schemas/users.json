@@ -1,56 +1,70 @@
 {
     "type": "object",
     "properties": {
-        "created_at": {
-            "type": "string", 
-            "format": "date-time"
-        },
         "email": {
             "type": "string",
             "format": "email"
-        },
+        }, 
         "email_verified": {
             "type": "boolean"
-        },    
-        "identities": {
-            "type": "array",
-            "items": {
-                "properties": {
-                    "user_id": {
-                        "type": "string"
-                    },
-                    "provider": {
-                        "type": "string"
-                    },
-                    "connection": {
-                        "type": "string"
-                    },
-                    "isSocial": {
-                        "type": "boolean"
-                    }
-                }
-            }    
+        }, 
+        "user_id": {
+            "type": "string"
         },
-        "last_password_reset": {
-                "type": "string",
-                "format": "date-time"
+        "created_at": {
+            "type": "string",
+            "format": "date-time"
         },
-            "name": {
-                "type": "string"
+        "updated_at": {
+            "type": "string",
+            "format": "date-time"
         },
-            "nickname": {
-                "type": "string"
+        "last_login": {
+            "type": "string",
+            "format": "date-time"
         },
-            "picture": {
-                "type": "string"
+        "logins_count": {
+            "type": "float"
         },
-            "updated_at": {
-                "type": "string",
-                "format": "date-time"
+        "last_ip": {
+            "type": "string",
+            "format": "date-time"
         },
-            "user_id": {
-                "type": "string",
-                "format": "date-time"
+        "has_pcd_subscription": {
+            "type": "string"
+        },
+        "pcd_account_number": {
+            "type": "string"
+        },
+        "pcd_status": {
+            "type": "string"
+        },
+        "pcd_account_type": {
+            "type": "string"
+        },
+        "stripe_customer_id": {
+            "type": "string"
+        },
+        "coral_id": {
+            "type": "string"
+        },
+        "pcd_email": {
+            "type": "string"
+        },
+        "pcd_geo": {
+            "type": "string"
+        },
+        "has_subscription": {
+            "type": "boolean"
+        },
+        "has_apple_subscription": {
+            "type": "boolean"
+        },
+        "has_staff_subscription": {
+            "type": "boolean"
+        },
+        "provider": {
+            "type": "string"
         }
     }
 }

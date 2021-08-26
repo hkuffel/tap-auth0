@@ -49,25 +49,37 @@ def start_user_export(auth_client, connection_id):
             'connection_id': connection_id,
             'format': 'json',
             'fields': [
-                {'name': 'email'}, 
-                {'name': 'email_verified'}, 
+                {'name': 'email'},
+                {'name': 'email_verified'},
                 {'name': 'user_id'},
                 {'name': 'created_at'},
                 {'name': 'updated_at'},
                 {'name': 'last_login'},
                 {'name': 'logins_count'},
                 {'name': 'last_ip'},
-                {'name': 'app_metadata.has_pcd_subscription', 'export_as': 'has_pcd_subscription'},
+                {
+                    'name': 'app_metadata.has_pcd_subscription',
+                    'export_as': 'has_pcd_subscription'
+                },
                 {'name': 'app_metadata.pcd_account_number', 'export_as': 'pcd_account_number'},
                 {'name': 'app_metadata.pcd_status', 'export_as': 'pcd_status'},
                 {'name': 'app_metadata.pcd_account_type', 'export_as': 'pcd_account_type'},
-                {'name': 'app_metadata.stripe[0].customer_id', 'export_as': 'stripe_customer_id'},
+                {
+                    'name': 'app_metadata.stripe[0].customer_id',
+                    'export_as': 'stripe_customer_id'
+                },
                 {'name': 'app_metadata.coral_id', 'export_as': 'coral_id'},
                 {'name': 'app_metadata.pcd_email', 'export_as': 'pcd_email'},
                 {'name': 'app_metadata.pcd_geo', 'export_as': 'pcd_geo'},
                 {'name': 'app_metadata.has_subscription', 'export_as': 'has_subscription'},
-                {'name': 'app_metadata.has_apple_subscription', 'export_as': 'has_apple_subscription'},
-                {'name': 'app_metadata.has_staff_subscription', 'export_as': 'has_staff_subscription'},
+                {
+                    'name': 'app_metadata.has_apple_subscription',
+                    'export_as': 'has_apple_subscription'
+                },
+                {
+                    'name': 'app_metadata.has_staff_subscription',
+                    'export_as': 'has_staff_subscription'
+                },
                 {'name': 'identities[0].connection', 'export_as': 'provider'}
             ]
         }
@@ -80,7 +92,7 @@ def get_job_status(auth_client, job_id):
 
 def process_job_results(job_results_str):
     with open('raw_encoded_results.json', 'wb') as fp:
-            fp.write(job_results_str)
+        fp.write(job_results_str)
     with gzip.open('raw_encoded_results.json', 'rb') as f_in:
         with open('decoded_results.json', 'wb') as f_out:
             shutil.copyfileobj(f_in, f_out)
