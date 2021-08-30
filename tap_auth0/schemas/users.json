@@ -1,5 +1,4 @@
 {
-    "type": "object",
     "properties": {
         "email": {
             "type": "string",
@@ -24,11 +23,10 @@
             "format": "date-time"
         },
         "logins_count": {
-            "type": "float"
+            "type": "integer"
         },
         "last_ip": {
-            "type": "string",
-            "format": "date-time"
+            "type": "string"
         },
         "has_pcd_subscription": {
             "type": "string"
